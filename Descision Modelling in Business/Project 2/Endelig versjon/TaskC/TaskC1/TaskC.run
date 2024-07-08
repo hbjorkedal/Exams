@@ -1,0 +1,33 @@
+# Load the model
+reset;
+model TaskC.mod;
+
+# Load the data
+data DataC.dat;
+
+# Choose a solver
+option solver cplex;
+option cplex_options 'mipdisplay=4';
+option show_stats 1;
+
+# Solve the problem
+solve;
+
+#Display the results
+display y;
+display x;
+display y;
+display IR;
+display z;
+display c;
+display u;
+display BD;
+display IB;
+
+display w;
+display IP;
+display PD;
+display v;
+
+
+display profit;

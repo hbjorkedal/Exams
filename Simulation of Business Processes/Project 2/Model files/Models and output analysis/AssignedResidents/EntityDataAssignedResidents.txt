@@ -1,0 +1,40 @@
+# Scheduled Entity Generation Example
+
+# Time	attribA	attribA
+08:00:00 New 1
+08:00:00 Follow-up 0
+08:15:00 Return 2
+08:30:00 New 3
+08:45:00 Return 1
+08:45:00 Follow-up 0
+09:00:00 New 2
+09:15:00 Return 3
+09:30:00 New 1
+09:30:00 Follow-up 0
+10:00:00 New 2
+10:15:00 Follow-up 0
+10:30:00 Return 3
+10:45:00 Return 1
+11:00:00 Return 2
+11:00:00 Follow-up 0
+11:15:00 Return 3
+13:00:00 New 1
+13:00:00 Follow-up 0
+13:15:00 Return 2
+13:30:00 New 3
+13:45:00 Return 1
+13:45:00 Follow-up 0
+14:00:00 New 2
+14:15:00 Return 3
+14:30:00 New 1
+14:30:00 Follow-up 0
+15:00:00 New 2
+15:15:00 Follow-up 0
+15:30:00 Return 3
+15:45:00 Return 1
+16:00:00 Return 2
+16:00:00 Follow-up 0
+16:15:00 Return 3
+
+
+

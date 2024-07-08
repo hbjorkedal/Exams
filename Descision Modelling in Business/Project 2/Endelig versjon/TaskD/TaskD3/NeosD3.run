@@ -1,0 +1,43 @@
+
+# Run file to run the model in NEOS
+for {a in A}{
+	let CurrentA := 1;
+	solve;
+	
+# Display results
+
+	display y;
+	display z;
+	display x;
+	display s;
+	display r;
+
+# Displays the longes truck route
+	display T_max;
+
+# Displays the total truck distance
+	display sum{i in N, j in N, t in T:i<>j}c[i,j]*x[i,j,t] + sum{d in D, t in T} z[d,t] * l[d];
+
+# Displays truck distance for each truck
+	display {t in T}:
+	sum{i in N, j in N:i<>j}c[i,j]*x[i,j,t] +
+	sum{d in D} z[d,t] * l[d];
+
+# Displays the total emergencyscore
+
+	display sum{i in H, t in T: i in D}z[i, t] * HI[1] +
+    sum{i in M, t in T: i in D}z[i, t] * MI[1] +
+    sum{i in N, j in H, t in T: i <> j} s[i,j,t]*HI[2]+
+    sum{i in N, j in M, t in T: i <> j} s[i,j,t]*MI[2]+
+    sum{i in N, j in H, t in T: i <> j} r[i,j,t]*HI[3]+
+    sum{i in N, j in M, t in T: i <> j} r[i,j,t]*MI[3];
+
+# Displays the emergency score of each truck
+	display {t in T}:
+	sum{i in H: i in D}z[i, t] * HI[1] +
+    sum{i in M: i in D}z[i, t] * MI[1] +
+    sum{i in N, j in H: i <> j} s[i,j,t]*HI[2]+
+    sum{i in N, j in M: i <> j} s[i,j,t]*MI[2]+
+    sum{i in N, j in H: i <> j} r[i,j,t]*HI[3]+
+    sum{i in N, j in M: i <> j} r[i,j,t]*MI[3];
+}

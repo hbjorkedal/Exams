@@ -1,0 +1,33 @@
+
+# Load the model
+reset;
+model TaskD2.mod;
+
+# Load the data
+data TaskD2.dat;
+option solver gurobi;
+option gurobi_options 'outlev=1';
+option show_stats 1;
+solve;
+
+
+
+# Display results
+
+display y;
+display z;
+display x;
+display s;
+display r;
+
+# Displays the total emergencyscore
+display Emergency_Score;
+
+
+# Displays the emergency score of each truck
+display{t in T} sum{i in H: i in D}z[i, t] * HI[1] +
+    sum{i in M: i in D}z[i, t] * MI[1] +
+    sum{i in N, j in H: i <> j} s[i,j,t]*HI[2]+
+    sum{i in N, j in M: i <> j} s[i,j,t]*MI[2]+
+    sum{i in N, j in H: i <> j} r[i,j,t]*HI[3]+
+    sum{i in N, j in M: i <> j} r[i,j,t]*MI[3];

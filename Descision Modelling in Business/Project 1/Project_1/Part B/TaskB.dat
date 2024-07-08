@@ -1,0 +1,81 @@
+set C := C1 C2 C3 C4;             # Set of cardboards
+set P := P1 P2 P3 P4;             # Set of products 
+set S := S1 S2;                   # Set of suppliers
+set T := A B;                     # Set of productcategories
+set Q := Strength, Transparency;  # Set of qualitytraits
+
+param MaxCardboard: S1 S2:= # Cardboard available from each supplier
+C1 0     20000
+C2 40000 0
+C3 25000 30000
+C4 25000 20000
+;
+
+param CostCardboard: S1 S2:= # Cost of cardboard c from supplier s
+C1 0 57.5
+C2 56 0
+C3 53.5 52.5
+C4 51 50
+;
+
+param MinSupply:= # Minumum purchasevalue from supplier s
+S1 1500000
+S2 1500000
+;
+
+param Maxprod:= # Maximum production for productioncategory t
+A 50000
+B 45000
+;
+
+param ProdCost:= # Productioncost for productioncatecory t
+A 4
+B 5
+;
+
+param Type: # Binary values linkin product to productioncategory
+	A B :=
+P1 1 0
+P2 1 0 
+P3 0 1
+P4 0 1
+;
+
+param MinProd:= # Minimum production of product p
+P1 9000
+P2 7000
+P3 10000
+P4 12000
+;
+
+param SalePrice:= # Saleprice of product p
+P1 80
+P2 85
+P3 97.5
+P4 100
+;
+
+param QualCardboard: # Qualityvalue of qualitytrait q in cardboard c
+	 Strength Transparency:=
+C1 98 0.2
+C2 96 0.4
+C3 92 1.5
+C4 90 2
+;
+
+param QualProdMin: # Minimum value of qualitytrait q in product p
+	Strength Transparency:=
+P1 88 0
+P2 92 0
+P3 96 0
+P4 97 0
+;
+
+param QualProdMax: # Maximum value of qualitytrait q in product p
+	Strength Transparency:=
+P1 100 2
+P2 100 1.5
+P3 100 0.3
+P4 100 0.3
+;
+

@@ -1,0 +1,17 @@
+set N := N1, N2, N3, N4, N5, C1, C2, C3, C4, C5, C6, S1, S2, S3, S4, S5;
+set T := T1, T2, T3, T4;
+set D := N1, N3, C1, C2, S2, S4, S5;
+set H := S1 S2 S3 S4 S5;
+set M := C1 C2 C3 C4 C5 C6;
+
+param HI :=
+1 200
+2 160
+3 120
+;
+
+param MI :=
+1 150
+2 100
+3 50
+;

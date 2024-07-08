@@ -1,0 +1,11 @@
+
+reset;
+
+model Project1_C2_penalty.mod;
+data Project1_C2penalty.dat;
+option solver cplex;
+
+solve; # solving the model
+
+display Cost, x, y, z;
+display Cost,x, y > project1_C2_penalty_results.txt;

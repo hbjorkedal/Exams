@@ -1,0 +1,173 @@
+set J := CrA, CrB; # crude oils
+set B := lowqfuel, distilA, distilB, naphtha1, naphtha2; #components
+set P := premium, regular, distilF, super; #blended products
+set SP := premium, regular, distilF, super, lowqfuel; #saleable products
+set Lowqfuel := lowqfuel;
+
+
+set I := CDU1,CDU2; 	#CDU: Crude Distilling Units
+set D := D1, D2; 	#depots
+set K := K1, K2, K3, K4, K5, K6, K7, K8; #markets
+set T := 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12; #periods
+
+param CMain := 500;  #cost of maintenance of a CDU during one period
+
+param E:= #incoming amount of crude oil per period
+CrA  575
+CrB  575
+;
+
+param A : 	CDU1 	CDU2 := # amount of component b obtained from one unit of crude j refined in CDU i
+CrA lowqfuel 	0.05	0.05	
+CrA distilA 	0.25	0.1	
+CrA distilB 	0.1	0.25	
+CrA naphtha1	0.3	0.2	
+CrA naphtha2	0.3	0.4	
+CrB lowqfuel 	0.04	0.04	
+CrB distilA 	0.1	0.2	
+CrB distilB 	0.16	0.16	
+CrB naphtha1	0.1	0.4	
+CrB naphtha2	0.6	0.2	
+; 
+
+param R : premium regular distilF super := # amount of component b needed in recipe for one unit of product p
+lowqfuel 	0	0	0	0
+distilA 	0	0.2	0.4	0
+distilB 	0.5	0	0.6	0
+naphtha1	0.1	0.5	0	0.5
+naphtha2 	0.4	0.3	0	0.5
+;
+	     
+param S := # sales price of saleable product p
+premium  576
+regular  525
+distilF  505
+super    550
+lowqfuel 119
+;
+ 
+param Cref : #cost of refining crude in CDUs
+	CDU1  CDU2 :=
+CrA 	53	75 	
+CrB 	53	75	
+;
+
+param maxR := #max capacity of CDUs (max amount of total crudes it can refine per operating period) 
+CDU1 700
+CDU2 700
+;
+
+param minR := #min capacity of CDUs (min amount of total crudes it can refine per operating period) 
+CDU1 70
+CDU2 70
+;
+
+param Cprod := #cost of producing one unit of product p at the blending department
+premium 35
+regular 30
+distilF 25
+super   30
+;
+
+param Ctra1 := 5; #cost of transporting one unit of any component from the refining to the blending department
+
+param Ctra2 := #cost of transporting one unit of 'lowqfuel' from the refining department to depot d
+D1  12
+D2  13
+;
+
+param Ctra3 := #cost of transporting one unit of any product from the blending department to depot d
+D1 10
+D2 12
+;
+
+param Ctra4 : 
+	K1  K2  K3  K4  K5  K6  K7  K8	:= #cost of transporting one unit of any product from depot d to market k
+D1	10  12  14  17  20  20  24  26
+D2	22  20  23  18  16  13  10  11
+;
+
+param Cinvi := 2; #cost of storing one unit of any crude at the refinery
+param Cinvb := 4; #cost of storing one unit of any component at the blending department
+param Cinvp :=    #cost of storing one unit of any product at depot d 
+D1 3
+D2 3
+; 
+
+param	delta	:=  # demand for saleable product p in market k in period t													
+[premium,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	50	50	50	80	80	62	62	52	52	60	50	
+	K2	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K3	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K4	0	0	80	80	80	120	120	96	96	86	86	94	84	
+	K5	0	0	20	20	40	40	40	32	32	22	22	30	20	
+	K6	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K7	0	0	50	50	50	60	60	54	54	44	44	52	42	
+	K8	0	0	10	10	10	20	20	14	14	4	4	12	2	
+															
+[regular,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	25	35	35	45	45	37	37	27	27	32	22	
+	K2	0	0	80	80	80	80	80	80	80	70	70	75	65	
+	K3	0	0	30	60	60	80	80	62	62	52	52	57	47	
+	K4	0	0	50	50	50	50	50	50	50	40	40	45	35	
+	K5	0	0	100	100	120	120	120	112	112	102	102	107	97	
+	K6	0	0	60	60	85	85	85	75	75	65	65	70	60	
+	K7	0	0	30	30	40	50	60	42	42	32	32	37	27	
+	K8	0	0	40	40	40	40	40	40	40	30	30	35	25	
+															
+[distilF,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	15	15	15	15	15	15	15	5	5	10	0	
+	K2	0	0	10	10	10	10	10	10	10	0	0	5	0	
+	K3	0	0	20	20	20	20	20	20	20	10	10	15	5	
+	K4	0	0	22	22	22	22	22	22	22	12	12	17	7	
+	K5	0	0	10	10	10	10	10	10	10	0	0	5	0	
+	K6	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K7	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K8	0	0	0	0	0	0	0	0	0	0	0	0	0	
+															
+[super,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	25	20	10	10	10	15	15	5	5	10	0	
+	K2	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K3	0	0	15	15	15	15	15	15	15	5	5	10	0	
+	K4	0	0	15	15	15	15	15	15	15	5	5	10	0	
+	K5	0	0	10	10	10	10	10	10	10	0	0	5	0	
+	K6	0	0	40	40	40	40	40	40	40	30	30	35	25	
+	K7	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K8	0	0	15	15	30	30	30	24	24	14	14	19	9															
+															
+[lowqfuel,*,*]:	0	1	2	3	4	5	6	7	8	9	10	11	12	:=
+	K1	0	0	25	20	10	10	10	15	15	5	5	10	0	
+	K2	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K3	0	0	15	15	15	15	15	15	15	5	5	10	0	
+	K4	0	0	15	15	15	15	15	15	15	5	5	10	0	
+	K5	0	0	10	10	10	10	10	10	10	0	0	5	0	
+	K6	0	0	40	40	40	40	40	40	40	30	30	35	25	
+	K7	0	0	0	0	0	0	0	0	0	0	0	0	0	
+	K8	0	0	15	15	30	30	30	24	24	14	14	19	9	
+;															
+
+param Ifinal : 
+        D1     D2 :=
+premium 225     225
+regular 325    350
+distilF 150    150
+super   250    200
+lowqfuel 0     0;
+
+
+
+param Izero : 
+        D1     D2 :=
+premium 200    220
+regular 420    450
+distilF 70     120
+super   130    220
+lowqfuel 0     0;
+
+
+param FixedCost:=
+CDU1 60000
+CDU2 120000
+;
+
+param RC:= 45000;

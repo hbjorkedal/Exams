@@ -1,0 +1,29 @@
+
+# Load the model
+reset;
+model TaskDMAX.mod;
+
+# Load the data
+data TaskD.dat;
+option solver gurobi;
+option gurobi_options 'outlev=1';
+option show_stats 1;
+solve;
+
+
+
+# Display results
+
+display y;
+display z;
+display x;
+
+# Displays the longest truck route
+display T_max;
+
+# Displays the route distance for each truck
+display {t in T} sum{i in N, j in N: i <> j} c[i,j] * x[i,j,t]+sum{d in D} l[d] * z[d,t];
+;
+
+# Displays the total route distance
+display sum{i in N, j in N, t in T: i <> j} c[i,j] * x[i,j,t]+ sum{d in D, t in T} l[d] * z[d,t];

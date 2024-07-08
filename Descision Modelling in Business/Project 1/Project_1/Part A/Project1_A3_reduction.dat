@@ -1,0 +1,20 @@
+
+set M := SCR, LEF, EP; # methods
+set G := CO2, CFC, N2O; # emission gasses
+
+param C := # cost of methods
+SCR 500
+LEF 3300
+EP  1100;
+
+param R : # reduction per unit of intensity of method m for each gas g
+	SCR   LEF   EP :=
+CO2  5	13	12
+CFC  8	9	10
+N2O  10	25	15;
+
+param T :=  # emission reduction targets 
+CO2  140
+CFC  100
+N2O  155;
+	

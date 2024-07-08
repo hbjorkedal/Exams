@@ -1,0 +1,21 @@
+
+reset;
+model Project1_A.mod;
+data Project1_A3_reduction.dat;
+option solver cplex;
+option presolve 0;
+option cplex_options 'sensitivity';
+solve;
+display cost, x;
+display cost, x > projectA2_reduction_sensitivity.txt;
+
+# sensitivity analysis
+display cost, x > projectA2_reduction_sensitivity.txt;
+display EmissionGoal > projectA2_reduction_sensitivity.txt;
+display EmissionGoal.slack > projectA2_reduction_sensitivity.txt;      # Slack or Surplus
+display EmissionGoal.dual > projectA2_reduction_sensitivity.txt;       # Shadow Prices (Dual Values)
+display EmissionGoal.up > projectA2_reduction_sensitivity.txt;         # Allowable Increase
+display EmissionGoal.current > projectA2_reduction_sensitivity.txt;    # Current RHS
+display EmissionGoal.down > projectA2_reduction_sensitivity.txt;       # Allowable Decrease
+display x.rc > projectA2_reduction_sensitivity.txt;					# reduced cost
+

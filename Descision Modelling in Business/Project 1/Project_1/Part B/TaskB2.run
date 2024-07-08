@@ -1,0 +1,18 @@
+
+reset;
+
+model TaskB.mod;
+data TaskB2.dat;
+option solver cplex;
+option presolve 0;
+option cplex_options 'sensitivity';
+
+solve;
+
+display profit, x, y, z;
+display profit, x, y, z > project1_B.txt;
+
+
+#sensitivity analysis showing shadowprices
+display Supplymax.dual, Supplymax.up, Supplymax.current, Supplymax.down > project1_B2.txt;
+display Supplymax.dual, Supplymax.up, Supplymax.current, Supplymax.down;

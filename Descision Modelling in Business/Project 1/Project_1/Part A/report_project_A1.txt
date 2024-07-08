@@ -1,0 +1,64 @@
+cost = 12888.9
+
+x [*] :=
+ EP  11.1111
+LEF   0
+SCR   1.33333
+;
+
+cost = 12888.9
+
+x [*] :=
+ EP  11.1111
+LEF   0
+SCR   1.33333
+;
+
+EmissionGoal [*] :=
+CFC   0
+CO2  77.7778
+N2O  11.1111
+;
+
+EmissionGoal.slack [*] :=
+CFC  21.7778
+CO2  -2.84217e-14
+N2O   0
+;
+
+EmissionGoal.dual [*] :=
+CFC   0
+CO2  77.7778
+N2O  11.1111
+;
+
+EmissionGoal.up [*] :=
+CFC  121.778
+CO2  144
+N2O  280
+;
+
+EmissionGoal.current [*] :=
+CFC  100
+CO2  140
+N2O  180
+;
+
+EmissionGoal.down [*] :=
+CFC  -1e+20
+CO2      90
+N2O     175
+;
+
+x.rc [*] :=
+ EP     1.98952e-13
+LEF  2011.11
+SCR     1.13687e-13
+;
+
+:      x.down  x.current     x.up       :=
+EP     750        1100      1200
+LEF   1288.89     3300     1e+20
+SCR    458.333     500       733.333
+;
+

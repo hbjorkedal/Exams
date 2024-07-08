@@ -1,0 +1,11 @@
+
+reset;
+
+model Project1_C2_increase.mod;
+data Project1_C2_increase.dat;
+option solver cplex;
+
+solve; #solving the model
+
+display Cost, x, y;
+display Cost, x, y > C_2_increase.txt;

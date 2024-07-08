@@ -1,0 +1,32 @@
+# Load the model
+reset;
+model TaskC.mod;
+
+# Load the data
+data DataC.dat;
+
+# Choose a solver
+option solver cplex;
+option cplex_options 'mipdisplay=4';
+option show_stats 1;
+
+# Solve the problem
+solve;
+
+# a) Display profit
+
+display profit;
+display y;
+display x;
+
+
+# b) Displaying unsatisfied demand
+display {sp in SP, t in T:t >0 }sum{k in K}delta[sp,k,t]-sum{d in D, k in K} v[sp,d,k,t-1];
+
+display {sp in SP}sum{t in T, k in K:t>0}delta[sp,k,t]-sum{d in D, t in T, k in K:t>0} v[sp,d,k,t-1];
+# c) Displaying inventory of crude oils
+display IR;
+
+# d) displaying inventory of components
+
+display IB;

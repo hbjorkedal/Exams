@@ -1,0 +1,6 @@
+# Scheduled Entity Generation Example																													
+																													
+# AppointmentTime	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	Appointment	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	Appointment	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype	AppointmentTime	Patienttype
+09:00:00	New	09:00:00	New	09:00:00	New	09:00:00	New	09:00:00	New	09:00:00	New	09:00:00	Follow-up	09:00:00	Follow-up	09:00:00	Follow-up	09:00:00	Follow-up	09:00:00	Follow-up	09:00:00	Return	09:00:00	Return	09:00:00	Return	09:00:00	Return
+09:00:00	New	09:15:00	New	09:00:00	Follow-up	09:00:00	Return	09:15:00	Follow-up	09:15:00	Return	09:00:00	Follow-up	09:15:00	Follow-up	09:00:00	Return	09:15:00	Return	09:15:00	New	09:00:00	Return	09:15:00	Return	09:15:00	New	09:15:00	Follow-up
+																													

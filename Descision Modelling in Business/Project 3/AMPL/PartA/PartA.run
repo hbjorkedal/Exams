@@ -1,0 +1,20 @@
+reset;
+
+model PartA.mod;
+
+data PartA.dat;
+
+option solver minos;
+option minos_options 'major_iterations=2000';
+# Solve the problem
+solve;
+
+# Display the values of gamma and beta that minimize MAPE
+display gamma, beta, MAPE;
+
+# Display the forecasted values
+display F;
+
+param APE{T};#error per period
+let {t in T:t>0} APE[t]:=abs((F[t] - PIFED[t]) / PIFED[t]);
+display gamma, beta, MAPE, F, L, R, APE > reportForecast.txt;

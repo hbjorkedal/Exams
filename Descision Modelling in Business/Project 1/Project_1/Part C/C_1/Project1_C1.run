@@ -1,0 +1,12 @@
+
+reset;
+
+model Project1_C1.mod;
+data Project1_C1.dat;
+option solver cplex;
+
+solve; # solving the problem
+
+display Cost, x, y;
+display Cost, x, y > project1__C1_result.txt;
+

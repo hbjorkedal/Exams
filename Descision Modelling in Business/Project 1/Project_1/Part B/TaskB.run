@@ -1,0 +1,18 @@
+
+reset;
+
+model TaskB.mod;
+data TaskB.dat;
+option solver cplex;
+option presolve 0;
+option cplex_options 'sensitivity';
+
+solve;
+
+display profit, x, y, z;
+display profit, x, y, z > project1_B.txt;
+
+
+#sensitivity analysis showing slack
+display Supplymax.slack;
+display Supplymax.slack > project1_B.txt;

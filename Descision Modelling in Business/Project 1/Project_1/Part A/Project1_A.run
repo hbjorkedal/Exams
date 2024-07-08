@@ -1,0 +1,25 @@
+
+reset;
+model Project1_A.mod;
+data Project1_A.dat;
+option solver cplex;
+option presolve 0;
+option cplex_options 'sensitivity';
+solve;
+display cost, x;
+display cost, x > report_project_A1.txt;
+
+##### sensitivity analysis for Part A, 2., 3. and 4. 
+
+#constraints
+display cost, x > report_project_A1.txt;
+display EmissionGoal > report_project_A1.txt;
+display EmissionGoal.slack > report_project_A1.txt;      # Slack or Surplus
+display EmissionGoal.dual > report_project_A1.txt;       # Shadow Prices (Dual Values)
+display EmissionGoal.up > report_project_A1.txt;         # Allowable Increase
+display EmissionGoal.current > report_project_A1.txt;    # Current RHS
+display EmissionGoal.down > report_project_A1.txt;       # Allowable Decrease
+
+# variables
+display x.rc > report_project_A1.txt;						# reduced cost
+display x.down, x.current, x.up > report_project_A1.txt;	# lower bound, current value, upper bound

@@ -1,0 +1,147 @@
+Simulation	SoftwareName	JaamSim	-
+Simulation	SoftwareVersion	2024-03	-
+Simulation	ConfigurationFile	D:\OneD\OneDrive\Skole\Master\BAN403\Proj1\BAN403-P1\Task2 -Queuing theory\Task2_uniform_distribution_long_run.cfg	-
+Simulation	ScenarioNumber	1.0	-
+Simulation	ScenarioIndex	{ 1 }	-
+Simulation	ReplicationNumber	1.0	-
+Simulation	RunNumber	1.0	-
+Simulation	RunIndex	{ 1 }	-
+Simulation	PresentTimeAndDate	mars 10, 2024 20:07	-
+Simulation	InitializationDuration	0.0	h
+Simulation	RunDuration	8760000.0	h
+Simulation	PresentSimulationTime	8760000.0	h
+
+*** ExpressionStatistics ***
+
+MachineStatistics	Value	1.0	-
+MachineStatistics	Minimum	0.0	-
+MachineStatistics	Maximum	3.0	-
+MachineStatistics	TimeAverage	1.0356929970150324	-
+MachineStatistics	TimeStandardDeviation	0.851571851275951	-
+MachineStatistics	HistogramBinCentres[0]	0.0	-
+MachineStatistics	HistogramBinCentres[1]	1.0	-
+MachineStatistics	HistogramBinCentres[2]	2.0	-
+MachineStatistics	HistogramBinCentres[3]	3.0	-
+MachineStatistics	HistogramBinFractions[0]	0.29110666012081454	-
+MachineStatistics	HistogramBinFractions[1]	0.4363648280757177	-
+MachineStatistics	HistogramBinFractions[2]	0.2182573664710739	-
+MachineStatistics	HistogramBinFractions[3]	0.054271145332393876	-
+
+*** Assign ***
+
+AssignState1	StateTimes[None]	8760000.0	h
+AssignState1	TotalTime	8760000.0	h
+AssignState1	NumberAdded	2150011.0	-
+AssignState1	NumberProcessed	2150011.0	-
+
+AssignState2	StateTimes[None]	8760000.0	h
+AssignState2	TotalTime	8760000.0	h
+AssignState2	NumberAdded	2150010.0	-
+AssignState2	NumberProcessed	2150010.0	-
+
+*** EntityGenerator ***
+
+MachineGenerator	StateTimes[Breakdown]	0.0	h
+MachineGenerator	StateTimes[Idle]	8760000.0	h
+MachineGenerator	StateTimes[Maintenance]	0.0	h
+MachineGenerator	StateTimes[Stopped]	0.0	h
+MachineGenerator	StateTimes[Working]	0.0	h
+MachineGenerator	TotalTime	8760000.0	h
+MachineGenerator	Utilisation	0.0	-
+MachineGenerator	Commitment	0.0	-
+MachineGenerator	Availability	1.0	-
+MachineGenerator	Reliability	NaN	-
+MachineGenerator	NumberAdded	3.0	-
+MachineGenerator	NumberProcessed	3.0	-
+
+*** EntityProcessor ***
+
+WorkingProcess	StateTimes[Breakdown]	0.0	h
+WorkingProcess	StateTimes[Idle]	475415.2331415527	h
+WorkingProcess	StateTimes[Maintenance]	0.0	h
+WorkingProcess	StateTimes[Stopped]	0.0	h
+WorkingProcess	StateTimes[Working]	8284584.766858446	h
+WorkingProcess	TotalTime	8760000.0	h
+WorkingProcess	Utilisation	0.9457288546642062	-
+WorkingProcess	Commitment	0.9457288546642063	-
+WorkingProcess	Availability	1.0	-
+WorkingProcess	Reliability	1.0	-
+WorkingProcess	NumberAdded	2150013.0	-
+WorkingProcess	NumberProcessed	2150011.0	-
+WorkingProcess	A	1.0	-
+
+*** Queue ***
+
+Queue1	StateTimes[None]	8760000.0	h
+Queue1	TotalTime	8760000.0	h
+Queue1	NumberAdded	2150013.0	-
+Queue1	NumberProcessed	2150013.0	-
+Queue1	QueueLengthAverage	0.0	-
+Queue1	QueueLengthStandardDeviation	0.0	-
+Queue1	QueueLengthMinimum	0.0	-
+Queue1	QueueLengthMaximum	3.0	-
+Queue1	QueueLengthTimes[0]	8760000.0	h
+Queue1	QueueLengthTimes[1]	0.0	h
+Queue1	QueueLengthTimes[2]	0.0	h
+Queue1	QueueLengthTimes[3]	0.0	h
+Queue1	QueueLengthFractions[0]	1.0	-
+Queue1	QueueLengthFractions[1]	0.0	-
+Queue1	QueueLengthFractions[2]	0.0	-
+Queue1	QueueLengthFractions[3]	0.0	-
+Queue1	QueueLengthCumulativeFractions[0]	1.0	-
+Queue1	QueueLengthCumulativeFractions[1]	1.0	-
+Queue1	QueueLengthCumulativeFractions[2]	1.0	-
+Queue1	QueueLengthCumulativeFractions[3]	1.0	-
+Queue1	AverageQueueTime	0.0	h
+Queue1	NumberReneged	0.0	-
+
+ServiceQueue	StateTimes[None]	8760000.0	h
+ServiceQueue	TotalTime	8760000.0	h
+ServiceQueue	NumberAdded	2150011.0	-
+ServiceQueue	NumberProcessed	2150011.0	-
+ServiceQueue	QueueLengthAverage	0.054271145332393876	-
+ServiceQueue	QueueLengthStandardDeviation	0.2265519545638573	-
+ServiceQueue	QueueLengthMinimum	0.0	-
+ServiceQueue	QueueLengthMaximum	1.0	-
+ServiceQueue	QueueLengthTimes[0]	8284584.766888229	h
+ServiceQueue	QueueLengthTimes[1]	475415.23311177036	h
+ServiceQueue	QueueLengthFractions[0]	0.9457288546676061	-
+ServiceQueue	QueueLengthFractions[1]	0.054271145332393876	-
+ServiceQueue	QueueLengthCumulativeFractions[0]	0.9457288546676061	-
+ServiceQueue	QueueLengthCumulativeFractions[1]	1.0	-
+ServiceQueue	AverageQueueTime	0.2211222329149806	h
+ServiceQueue	NumberReneged	0.0	-
+
+*** Server ***
+
+ServiceTeam1	StateTimes[Breakdown]	0.0	h
+ServiceTeam1	StateTimes[Idle]	3568758.6115281475	h
+ServiceTeam1	StateTimes[Maintenance]	0.0	h
+ServiceTeam1	StateTimes[Stopped]	0.0	h
+ServiceTeam1	StateTimes[Working]	5191241.388471852	h
+ServiceTeam1	TotalTime	8760000.0	h
+ServiceTeam1	Utilisation	0.5926074644374261	-
+ServiceTeam1	Commitment	0.5926074644374261	-
+ServiceTeam1	Availability	1.0	-
+ServiceTeam1	Reliability	1.0	-
+ServiceTeam1	NumberAdded	1298799.0	-
+ServiceTeam1	NumberProcessed	1298799.0	-
+
+ServiceTeam2	StateTimes[Breakdown]	0.0	h
+ServiceTeam2	StateTimes[Idle]	5353985.967517116	h
+ServiceTeam2	StateTimes[Maintenance]	0.0	h
+ServiceTeam2	StateTimes[Stopped]	0.0	h
+ServiceTeam2	StateTimes[Working]	3406014.032482883	h
+ServiceTeam2	TotalTime	8760000.0	h
+ServiceTeam2	Utilisation	0.3888143872697355	-
+ServiceTeam2	Commitment	0.3888143872697356	-
+ServiceTeam2	Availability	1.0	-
+ServiceTeam2	Reliability	1.0	-
+ServiceTeam2	NumberAdded	851212.0	-
+ServiceTeam2	NumberProcessed	851211.0	-
+
+*** SimEntity ***
+
+Machine	StateTimes[Working]	8760000.0	h
+Machine	TotalTime	8760000.0	h
+
